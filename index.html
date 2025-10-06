@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>For You 💖</title>
+<style>
+  body {
+    background-color: #ffe6f2;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding: 50px;
+    color: #b84d7a;
+  }
+
+  h1 {
+    font-size: 2em;
+    color: #d63384;
+    margin-bottom: 20px;
+  }
+
+  .button-container {
+    margin: 30px;
+  }
+
+  button {
+    background: #ffb6c1;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: #ff8fab;
+    transform: scale(1.05);
+  }
+
+  .message-box {
+    display: none;
+    margin: 30px auto;
+    max-width: 600px;
+    background: #fff0f5;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+    font-size: 16px;
+    line-height: 1.6;
+    color: #b84d7a;
+  }
+
+  .sticky-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .sticky {
+    width: 160px;
+    height: 160px;
+    background: #ffdeeb;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+    transform: rotate(var(--rotate));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b84d7a;
+    font-weight: 500;
+    font-size: 14px;
+    transition: transform 0.3s;
+  }
+
+  .sticky:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+  }
+
+</style>
+</head>
+<body>
+
+  <h1>Hey Mea! :))) </h1>
+
+  <div class="button-container">
+    <button onclick="showMessage('breatheMsg')">Breathe 🌸</button>
+    <button onclick="showMessage('heartMsg')">Read me! 💖</button>
+    <button onclick="showMessage('comfortMsg')">Read me! 🤍</button>
+    <button onclick="showStickyNotes()">Sticky Notes 🩷</button>
+  </div>
+
+  <div class="message-box" id="breatheMsg">
+    Sometimes all you need is a single breath to start feeling a little lighter.  
+    So right now, close your eyes for a second — inhale deeply, hold it, and slowly let go.  
+    You don’t have to fix everything today. You don’t need to be strong all the time.  
+    You just need to be here, breathing, existing — and that’s already more than enough. 💗  
+    <br><br>
+    The world can be too loud sometimes, but you don’t have to carry all that noise in your heart.  
+    Just breathe. You deserve peace, even in small moments like this. 🌸
+  </div>
+
+  <div class="message-box" id="heartMsg">
+    I know your heart feels heavy. I know you’re trying to make sense of things that still hurt.  
+    But please, don’t close yourself off from love — especially your own.  
+    You have such a warm, gentle heart, even if it’s been bruised.  
+    Let it rest, let it heal, and when you’re ready, open it again.  
+    The world still has so much beauty waiting for you, and so many people who care. 🌷  
+    <br><br>
+    You’ve always had this quiet strength — the kind that doesn’t shout, but endures.  
+    One day, you’ll look back and realize how much you’ve grown through the pain. 💞
+  </div>
+
+  <div class="message-box" id="comfortMsg">
+    I want you to know something: even when I don’t say the right words, I still care deeply.  
+    Sometimes I stay quiet — not because I don’t want to comfort you,  
+    but because I’m scared I’ll say something that won’t help at all.  
+    I wish I could take away your pain, or at least hold it with you.  
+    I may not always have the perfect words, but my heart is always with you — quietly hoping you find peace again. 🤍  
+    <br><br>
+    You don’t have to go through this alone.  
+    Even if all I can offer is silence, I promise it’s a silence that listens, that stays, and that cares. 🌼
+  </div>
+
+  <div class="sticky-container" id="stickyContainer" style="display:none;"></div>
+
+<script>
+  const stickyMessages = [
+    "You are loved 💕",
+    "You are enough 🌸",
+    "You are stronger than you think 💪",
+    "Your feelings are valid 💧",
+    "You deserve peace ☁️",
+    "You make people smile 🌼",
+    "You have such a kind heart 💖",
+    "It’s okay to rest 💤",
+    "One step at a time 🦋",
+    "The world is better with you in it 🌎",
+    "You’re doing your best 🌱",
+    "You have a gentle soul 💫",
+    "You matter — always 🌷",
+    "Healing takes time ⏳",
+    "You’re loved more than you know 💞",
+    "Even the sun hides sometimes ☀️",
+    "Keep shining 🌟",
+    "You’re precious 🩵",
+    "You’re not alone 🤍",
+    "Better days are coming 🌈",
+    "Your heart still knows how to bloom 🌺",
+    "Every tear waters your growth 🌿",
+    "You make ordinary moments feel special 💗",
+    "Your softness is your strength 🌻",
+    "You’re worthy of love, right now and always 💞"
+  ];
+
+  function showMessage(id) {
+    document.querySelectorAll('.message-box').forEach(box => box.style.display = 'none');
+    document.getElementById('stickyContainer').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function showStickyNotes() {
+    document.querySelectorAll('.message-box').forEach(box => box.style.display = 'none');
+    const container = document.getElementById('stickyContainer');
+    container.innerHTML = '';
+    container.style.display = 'flex';
+    stickyMessages.forEach(msg => {
+      const note = document.createElement('div');
+      note.className = 'sticky';
+      note.style.setProperty('--rotate', (Math.random() * 10 - 5) + 'deg');
+      note.style.background = ['#ffd6e8','#ffe5ec','#fcd5ce','#fae1dd','#fde2e4'][Math.floor(Math.random()*5)];
+      note.innerText = msg;
+      container.appendChild(note);
+    });
+  }
+</script>
+
+</body>
+</html>
